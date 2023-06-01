@@ -10,6 +10,7 @@
     display: flex;
     height: 70px;
     align-items: center;
+    border-bottom: 1px solid var(--secondColor);
 }
 .logo {
     width: 80px;
@@ -92,5 +93,69 @@
   cursor: pointer;
   color: var(--secondColor);
 } 
+.mainSideBar {
+  position: fixed;
+  top: 0;
+  width: 320px;
+  height: 100vh;
+  background-color: var(--mainColor);
+  z-index: 9999999;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+.show {
+   visibility: visible;
+  right: 0;
+  opacity: 1;
+}
+.hide {
+   visibility: hidden;
+  right: -300%;
+  opacity: 0;
+}
 /* end mobile view */
 /* end nav bar */
+/* start footer */
+.footerContainer {
+    background-color: var(--mainColor) !important;
+    width: 100vw;
+}
+.sub {
+  padding: 7px 15px;
+  height: 40px;
+  margin: 0 auto 10px ;
+}
+.btn {
+  padding: 7px 15px;
+  border: none;
+  background-color: var(--secondColor) !important;
+  color: white !important;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px auto 0;
+}
+.copyRightContainer {
+  border-top: 1px solid white;
+  background-color: var(--mainColor) !important;
+}
+.info{
+  font-size: 13px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+
+.info:hover{
+  color: var(--secondColor) !important;
+}
+.tech {
+  color: white !important;
+}
+/* end footer */

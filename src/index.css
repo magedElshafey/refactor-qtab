@@ -21,10 +21,47 @@ body {
   scroll-behavior: smooth;
   text-transform: capitalize;
 }
+/* utilit classes */
 .link {
   text-decoration: none; 
   color: white !important;
 }
 .link:hover{
   color: white !important;
+}
+.webMain {
+  background-color: var(--mainColor) !important;
+  min-height: calc(100vh - 270px);
+}
+.mt {
+  margin-top: 80px;
+}
+.inp {
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 40px;
+  padding: 7px 15px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+.inp:focus {
+  outline: 1px solid var(--secondColor);
+}
+.label {
+  color: var(--secondColor);
+}
+.btn {
+  padding: 7px 15px;
+  border: none;
+  background-color: var(--secondColor) !important;
+  color: white !important;
+  text-transform: capitalize !important;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
 }
