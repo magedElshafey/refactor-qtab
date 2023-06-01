@@ -1,0 +1,47 @@
+.mainContainer {
+    background-image: url(../../../assets/contact.jpg);
+       background-size: cover;
+    height: 600px;
+    position: relative;
+}
+@media screen and (max-width : 767px) {
+    .mainContainer {
+        height: 850px;
+    }
+}
+.contact {
+    position: relative;
+}
+.contact::before {
+    content: "";
+    width: 10%;
+    height: 3px;
+    background-color: var(--secondColor);
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+.text {
+    padding: 7px;
+    caret-color: var(--secondColor);
+    width: 100%;
+    height: 150px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+.text:focus {
+     outline: 1px solid var(--secondColor);
+}
+.text::placeholder  {
+    font-weight: bold;
+    color: gray;
+    text-transform: capitalize;
+}

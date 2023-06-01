@@ -1,6 +1,18 @@
+.mainContainer {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   min-height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: var(--mainColor);
+   
+}
 .dots {
-   width: 13.4px;
-   height: 13.4px;
+   width: 25px;
+   height: 25px;
    position: relative;
 }
 
@@ -25,12 +37,20 @@
 
 @keyframes dots-dm1l1cmd {
    100% {
-      transform: translateX(26.9px);
-   }
+      transform: translateX(40px);
+      -webkit-transform: translateX(40px);
+      -moz-transform: translateX(40px);
+      -ms-transform: translateX(40px);
+      -o-transform: translateX(40px);
+}
 }
 
 @keyframes dots-dh1qq5md {
    100% {
-      transform: rotate(-180deg) translateX(26.9px);
-   }
+      transform: rotate(-180deg) translateX(40px);
+      -webkit-transform: rotate(-180deg) translateX(40px);
+      -moz-transform: rotate(-180deg) translateX(40px);
+      -ms-transform: rotate(-180deg) translateX(40px);
+      -o-transform: rotate(-180deg) translateX(40px);
+}
 }
