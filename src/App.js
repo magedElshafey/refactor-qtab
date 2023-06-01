@@ -11,6 +11,7 @@ import Btns from "./Components/fixedBtns/Btns";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Products from "./Pages/Products";
+import Product from "./Pages/Product";
 const api = "https://qtap-dashboard.qutap.co/api";
 const App = () => {
   const queryClient = new QueryClient();
@@ -41,6 +42,9 @@ const App = () => {
           </Routes>
           <Routes>
             <Route path="/products" element={<Products api={api} />} />
+          </Routes>
+          <Routes>
+            <Route path="/products/:id" element={<Product api={api} />} />
           </Routes>
           <Routes>
             <Route path="/login" element={<Login api={api} />} />

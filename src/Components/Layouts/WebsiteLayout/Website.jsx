@@ -59,8 +59,8 @@ const Website = ({ children }) => {
     "footer",
     footerDetails,
     {
-      cacheTime: 1800000,
-      staleTime: 1800000,
+      cacheTime: 4800000,
+      staleTime: 4800000,
     }
   );
 
