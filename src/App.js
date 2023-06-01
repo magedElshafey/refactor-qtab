@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import Aos from "aos";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
+import { QueryClientProvider, QueryClient } from "react-query";
+import Btns from "./Components/fixedBtns/Btns";
+import Home from "./Pages/Home";
+const App = () => {
+  const queryClient = new QueryClient();
+  // handle animation effect
+  useEffect(() => {
+    Aos.init({
+      offset: 0,
+      duration: 1200,
+    });
+  }, []);
 
-function App() {
+  // handle scroll to top
+  function ScrollToTopAfterChangePage() {
+    const { pathname } = useLocation();
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+    return null;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <ScrollToTopAfterChangePage />
+          <Btns />
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </Router>
+      </QueryClientProvider>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,96 @@
+/* start nav bar */
+/* start larg screen navbar */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    width: 100vw;
+    background-color: var(--mainColor);
+    display: flex;
+    height: 70px;
+    align-items: center;
+}
+.logo {
+    width: 80px;
+    max-height: 100%;
+    object-fit: cover;
+}
+.inp {
+    padding: 15px 7px ;
+    border: 1px solid #eee;
+    height: 30px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+.inp:focus{
+    outline: none;
+}
+.searchContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 15%;
+    background-color: var(--secondColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white !important;
+    padding: 5px;
+}
+.loginBtn {
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.regBtn {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondColor);
+    padding: 7px;
+    text-transform: capitalize;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+.icon {
+  color: white !important;
+  cursor: pointer;
+  position: relative;
+}
+
+.length {
+  width: 20px;
+  height: 20px;
+  background-color: var(--secondColor) !important;
+  color: white !important;
+  position: absolute;
+  top: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: -5px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+} 
+/* end larg screen navbar */
+/* start mobile view */
+.mainIcon {
+  cursor: pointer;
+  color: var(--secondColor);
+} 
+/* end mobile view */
+/* end nav bar */
