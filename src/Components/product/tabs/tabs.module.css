@@ -1,0 +1,21 @@
+.mainContainer {
+    border-bottom: 1px solid #ccc;
+}
+.btn {
+    border: none;
+    text-transform: capitalize;
+    background-color: transparent;
+    color: white;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+.btn:hover:not(.active) {
+    color: var(--secondColor);
+}
+.active {
+    color: var(--secondColor);
+    border-bottom: 1px solid var(--secondColor);
+}

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import style from "./mainDetails.module.css";
+import AddToCartBtn from "../../utilits/addToCartBtn/AddToCartBtn";
 const MainDetails = ({ data }) => {
   const [selectedImg, setSelectedImg] = useState(0);
   return (
     <div className="container mt-5 pt-5">
       <div>
         <p
-          className="text-white fw-bold text-uppercase fs-4 mb-5 text-center"
+          className="text-white fw-bold text-uppercase fs-4 mb-3 text-center"
           data-aos="fade-down"
         >
           {data.title}
@@ -25,18 +26,26 @@ const MainDetails = ({ data }) => {
               loading="lazy"
               className={`mb-5 ${style.mainImg}`}
             />
-            <div className="d-flex justify-content-center align-items-center gap-2">
+            <div className="d-flex mb-4 justify-content-center align-items-center gap-2">
               {data.images.map((item, index) => (
                 <img
                   key={index}
                   className={style.subImg}
                   src={item}
-                  alt=""
+                  alt="products/img"
+                  loading="lazy"
                   onClick={() => setSelectedImg(index)}
                 />
               ))}
             </div>
+
+            <p className="text-white m-0 p-0  text-center fs-4">
+              {data.price} L.E
+            </p>
           </div>
+        </div>
+        <div className="d-flex justify-content-center">
+          <AddToCartBtn />
         </div>
       </div>
     </div>
