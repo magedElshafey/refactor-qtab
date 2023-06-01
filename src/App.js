@@ -10,6 +10,7 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import Btns from "./Components/fixedBtns/Btns";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
+import Products from "./Pages/Products";
 const api = "https://qtap-dashboard.qutap.co/api";
 const App = () => {
   const queryClient = new QueryClient();
@@ -37,6 +38,9 @@ const App = () => {
           <Btns />
           <Routes>
             <Route path="/" element={<Home api={api} />} />
+          </Routes>
+          <Routes>
+            <Route path="/products" element={<Products api={api} />} />
           </Routes>
           <Routes>
             <Route path="/login" element={<Login api={api} />} />

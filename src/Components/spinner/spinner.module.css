@@ -31,8 +31,12 @@
 }
 
 .dots::after {
-   transform: rotate(0deg) translateX(26.9px);
+   transform: rotate(0deg) translateX(40px);
    animation: dots-dh1qq5md 0.6s infinite linear;
+   -webkit-transform: rotate(0deg) translateX(40px);
+   -moz-transform: rotate(0deg) translateX(40px);
+   -ms-transform: rotate(0deg) translateX(40px);
+   -o-transform: rotate(0deg) translateX(40px);
 }
 
 @keyframes dots-dm1l1cmd {

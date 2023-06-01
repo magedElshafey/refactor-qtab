@@ -4,26 +4,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
-import { useQuery } from "react-query";
-import axios from "axios";
 import Spinner from "../../spinner/Spinner";
 import { HashLink } from "react-router-hash-link";
 import AddToCartBtn from "../../utilits/addToCartBtn/AddToCartBtn";
+import { useProducts } from "../../Hooks/useProducts";
 const Store = ({ api }) => {
-  const { isLoading, data } = useQuery(
-    "products",
-    () => {
-      return axios.get(`${api}/products`, {
-        headers: {
-          lang: "en",
-        },
-      });
-    },
-    {
-      cacheTime: 900000,
-      staleTime: 450000,
-    }
-  );
+  const { isLoading, data } = useProducts();
 
   const swiperOptions = {
     loop: true,
@@ -65,7 +51,12 @@ const Store = ({ api }) => {
             {data?.data?.data?.map((item, index) => (
               <SwiperSlide className="slider position-relative" key={index}>
                 <HashLink to={`/products/${item.id}`}>
-                  <img src={item.image} alt="" className={style.mainImg} />
+                  <img
+                    src={item.image}
+                    alt="product/img"
+                    loading="lazy"
+                    className={style.mainImg}
+                  />
                 </HashLink>
                 <div className="text-white">
                   <HashLink to={`/products/${item.id}`} className="t-none">
