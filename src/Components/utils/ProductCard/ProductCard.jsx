@@ -34,7 +34,7 @@ const ProductCard = ({ item }) => {
         {item.description.substring(0, 10)}...
       </p>
       <p className="text-white fw-bold mb-4">{item.price}</p>
-      <AddToCartBtn />
+      <AddToCartBtn item={item} />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./hero.module.css";
 import { useNavigate } from "react-router-dom";
-import MainBtn from "../../utilits/mainBtn/MainBtn";
+import MainBtn from "../../utils/mainBtn/MainBtn";
 const Hero = ({ data }) => {
   const navigate = useNavigate();
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./about.module.css";
-import MainBtn from "../../utilits/mainBtn/MainBtn";
+import MainBtn from "../../utils/mainBtn/MainBtn";
 import { HashLink } from "react-router-hash-link";
 const About = ({ data }) => {
   return (

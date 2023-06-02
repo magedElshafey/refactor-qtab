@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import style from "./website.module.css";
 import logo from "../../../assets/white-logo.png";
 import { HashLink } from "react-router-hash-link";
-import axios from "axios";
-import { useQuery } from "react-query";
+
+import { request } from "../../utils/axios-utils";
+import { useQuery, useMutation } from "react-query";
 import {
   AiOutlineSearch,
   AiOutlineShoppingCart,
@@ -21,39 +22,44 @@ import { dispatchLogout } from "../../../Redux/Auth.js";
 import Swal from "sweetalert2";
 import Spinner from "../../../Components/spinner/Spinner";
 // fetcher function
-const logout = (token) => {
-  return axios.get("https://qtap-dashboard.qutap.co/api/user/logout", {
-    headers: {
-      "X-CSRF-Token": document
-        .querySelector('meta[name="csrf-token"]')
-        .getAttribute("content"),
-      "Access-Control-Allow-Credentials": "true",
-      credentials: "include",
-      "Content-Type": "application/json",
-      lang: "en",
-      Authorization: `Bearer ${token}`,
-    },
-  });
+const logout = (data) => {
+  return request({ url: "/user/logout", method: "post", data });
 };
 // fetch footer details
 const footerDetails = () => {
-  return axios.get("https://qtap-dashboard.qutap.co/api/mainpage", {
-    headers: {
-      lang: "en",
-    },
-  });
+  return request({ url: "/mainpage" });
 };
 const Website = ({ children }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.Cart.cartItems);
-  const { isLogin, token } = useSelector((state) => state.Auth);
+  const { isLogin } = useSelector((state) => state.Auth);
 
   const [showMenu, setShowMenu] = useState(false);
 
   // handle logout
-  const { data, isLoading, refetch } = useQuery("logout", () => logout(token), {
-    enabled: false,
+  const { isLoading, mutate } = useMutation(logout, {
+    onSuccess: (data) => {
+      if (data?.data.status) {
+        Swal.fire({
+          position: "center",
+          title: "You logged out successfully",
+          icon: "success",
+        });
+        dispatch(dispatchLogout());
+      }
+    },
+    onError: () => {
+      Swal.fire({
+        position: "top-right",
+        icon: "error",
+        title: "Please try again",
+      });
+    },
   });
+  const handleLogout = () => {
+    const body = null;
+    mutate(body);
+  };
   // footer details
   const { data: footer, isLoading: loadingFooter } = useQuery(
     "footer",
@@ -65,30 +71,7 @@ const Website = ({ children }) => {
   );
 
   const currentYear = new Date().getFullYear();
-  // const handleLogout = async () => {
-  //   await fetch(`${api}/user/logout`, {
-  //     method: "POST",
-  //     headers: {},
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       if (data.status) {
-  //         Swal.fire({
-  //           position: "center",
-  //           title: "You logged out successfully",
-  //           icon: "success",
-  //         });
-  //         dispatch(dispatchLogout());
-  //       } else {
-  //         Swal.fire({
-  //           position: "top-right",
-  //           icon: "error",
-  //           title: "Please try again",
-  //         });
-  //       }
-  //     });
-  // };
+
   return (
     <div>
       {isLoading || loadingFooter ? (
@@ -110,7 +93,7 @@ const Website = ({ children }) => {
                     loading="lazy"
                   />
                   {/*main Links*/}
-                  <ul className="p-0  text-white d-flex align-items-center gap-4">
+                  <ul className="p-0  text-white d-flex align-items-center gap-3">
                     <li>
                       <HashLink className="link fw-bold" to="/">
                         Home
@@ -163,7 +146,7 @@ const Website = ({ children }) => {
                   {/*auth btns*/}
                   <button className={style.loginBtn}>
                     {isLogin ? (
-                      <HashLink onClick={refetch} to="/" className="link">
+                      <HashLink onClick={handleLogout} to="/" className="link">
                         log out
                       </HashLink>
                     ) : (
@@ -180,7 +163,7 @@ const Website = ({ children }) => {
                   <div className="position-relative">
                     <AiOutlineShoppingCart
                       onClick={() => dispatch(openCart())}
-                      size={30}
+                      size={20}
                       className={style.icon}
                     />
                     <span className={style.length}>{cartItems.length}</span>

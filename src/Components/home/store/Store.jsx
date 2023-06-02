@@ -6,9 +6,9 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import Spinner from "../../spinner/Spinner";
 import { HashLink } from "react-router-hash-link";
-import AddToCartBtn from "../../utilits/addToCartBtn/AddToCartBtn";
+import AddToCartBtn from "../../utils/addToCartBtn/AddToCartBtn";
 import { useProducts } from "../../Hooks/useProducts";
-const Store = ({ api }) => {
+const Store = () => {
   const { isLoading, data } = useProducts();
 
   const swiperOptions = {
@@ -70,7 +70,7 @@ const Store = ({ api }) => {
                   <p className={`text-white fs-4 ${style.price}`}>
                     {item.price}
                   </p>
-                  <AddToCartBtn api={api} />
+                  <AddToCartBtn item={item} />
                 </div>
               </SwiperSlide>
             ))}

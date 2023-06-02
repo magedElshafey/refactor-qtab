@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import ReactPaginate from "react-paginate";
-import ProductCard from "../../utilits/ProductCard/ProductCard";
+import ProductCard from "../../utils/ProductCard/ProductCard";
 import { useProducts } from "../../Hooks/useProducts";
 import Spinner from "../../spinner/Spinner";
 const AllProducts = () => {

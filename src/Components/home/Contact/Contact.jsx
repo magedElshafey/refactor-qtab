@@ -3,7 +3,7 @@ import style from "./contact.module.css";
 import { FaTwitter, FaFacebook } from "react-icons/fa";
 import { AiFillYoutube, AiFillLinkedin, AiFillInstagram } from "react-icons/ai";
 import { BsWhatsapp, BsSnapchat, BsTiktok } from "react-icons/bs";
-import MainBtn from "../../utilits/mainBtn/MainBtn";
+import MainBtn from "../../utils/mainBtn/MainBtn";
 
 const Contact = ({ data }) => {
   const [name, setName] = useState("");

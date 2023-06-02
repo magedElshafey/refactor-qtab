@@ -71,8 +71,8 @@
 }
 
 .length {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   background-color: var(--secondColor) !important;
   color: white !important;
   position: absolute;

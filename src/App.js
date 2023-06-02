@@ -12,7 +12,8 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Products from "./Pages/Products";
 import Product from "./Pages/Product";
-const api = "https://qtap-dashboard.qutap.co/api";
+import Reg from "./Pages/Reg";
+
 const App = () => {
   const queryClient = new QueryClient();
   // handle animation effect
@@ -38,16 +39,19 @@ const App = () => {
           <ScrollToTopAfterChangePage />
           <Btns />
           <Routes>
-            <Route path="/" element={<Home api={api} />} />
+            <Route path="/" element={<Home />} />
           </Routes>
           <Routes>
-            <Route path="/products" element={<Products api={api} />} />
+            <Route path="/products" element={<Products />} />
           </Routes>
           <Routes>
-            <Route path="/products/:id" element={<Product api={api} />} />
+            <Route path="/products/:id" element={<Product />} />
           </Routes>
           <Routes>
-            <Route path="/login" element={<Login api={api} />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+          <Routes>
+            <Route path="/reg" element={<Reg />} />
           </Routes>
         </Router>
       </QueryClientProvider>

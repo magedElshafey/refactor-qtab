@@ -1,23 +1,19 @@
 import React from "react";
 import Website from "../Components/Layouts/WebsiteLayout/Website";
 import { useQuery } from "react-query";
-import axios from "axios";
 import Spinner from "../Components/spinner/Spinner";
 import Hero from "../Components/home/hero/Hero";
 import Feat from "../Components/home/featuers/Feat";
 import About from "../Components/home/about/About";
 import Store from "../Components/home/store/Store";
 import Contact from "../Components/home/Contact/Contact";
+import { request } from "../Components/utils/axios-utils";
 // fetch home page data
-const fetchData = (api) => {
-  return axios.get(`${api}/mainpage`, {
-    headers: {
-      lang: "en",
-    },
-  });
+const fetchData = () => {
+  return request({ url: "/mainpage" });
 };
-const Home = ({ api }) => {
-  const { data, isLoading } = useQuery("home page", () => fetchData(api), {
+const Home = () => {
+  const { data, isLoading } = useQuery("home page", fetchData, {
     cacheTime: 1800000,
     staleTime: 1800000,
   });
@@ -31,7 +27,7 @@ const Home = ({ api }) => {
           <Hero data={data?.data?.data?.mainpage} />
           <Feat data={data?.data?.data?.features} />
           <About data={data?.data?.data?.aboutus} />
-          <Store api={api} />
+          <Store />
           <Contact data={data?.data?.data?.followUs} />
         </Website>
       )}
