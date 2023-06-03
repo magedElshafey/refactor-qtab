@@ -13,6 +13,7 @@ import Login from "./Pages/Login";
 import Products from "./Pages/Products";
 import Product from "./Pages/Product";
 import Reg from "./Pages/Reg";
+import CartSidebar from "./Components/cart/CartSidebar";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -37,7 +38,9 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <Router>
           <ScrollToTopAfterChangePage />
+
           <Btns />
+          <CartSidebar />
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
