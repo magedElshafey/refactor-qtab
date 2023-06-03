@@ -1,7 +1,7 @@
 .sidebar {
     background-color: #f8f9fa;
     min-height: 100vh;
-    width: 150px;
+    width: 170px;
 }
 .logoContainer {
     width: 100%;
@@ -15,10 +15,12 @@
     margin:10px auto 0 !important;
     object-fit: cover;
 }
+
 .nav {
     height: 100px;
     background-color: #23262e;
-    width: calc(100% - 150px);
+    width: 100% ; 
+   
 }
 .av {
     width: 30px;

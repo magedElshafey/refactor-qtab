@@ -190,4 +190,9 @@ body {
 .dash-link:hover {
   color: var(--secondColor) !important;
 }
+.main-dash {
+  background-color: #ececec!important;
+  min-height: calc(100vh - 100px);
+  
+}
 /* end dashboard */

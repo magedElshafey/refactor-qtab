@@ -14,10 +14,10 @@ import { BsCardImage } from "react-icons/bs";
 import avatar from "../../../assets/pexels-photo-941693.jpeg";
 import { MdNotificationsNone } from "react-icons/md";
 import { useSelector } from "react-redux";
-const Dashboardlayout = ({ childern }) => {
+const Dashboardlayout = ({ children }) => {
   const { cartItems } = useSelector((state) => state.Cart);
   return (
-    <div className="d-flex justify-content-between">
+    <div className="d-flex">
       {/*sidebar*/}
       <div className={`${style.sidebar}`}>
         <div className={style.logoContainer}>
@@ -79,26 +79,31 @@ const Dashboardlayout = ({ childern }) => {
           </li>
         </ul>
       </div>
-      <div
-        className={`d-flex justify-content-end align-items-center px-2 ${style.nav}`}
-      >
-        <div className="d-flex align-items-center gap-3">
-          <img
-            alt="avatar/img"
-            className={style.av}
-            loading="lazy"
-            src={avatar}
-          />
-          {/*cart container*/}
-          <div className="position-relative pointer">
-            <AiOutlineShoppingCart size={30} className="text-white" />
-            <span className={style.length}>{cartItems.length}</span>
+      <div className={`w-100  d-flex flex-wrap`}>
+        <div
+          className={`w-100 d-flex justify-content-end align-items-center px-2 ${style.nav}`}
+        >
+          <div className="d-flex align-items-center gap-3">
+            <img
+              alt="avatar/img"
+              className={style.av}
+              loading="lazy"
+              src={avatar}
+            />
+            {/*cart container*/}
+            <div className="position-relative pointer">
+              <AiOutlineShoppingCart size={30} className="text-white" />
+              <span className={style.length}>{cartItems.length}</span>
+            </div>
+            {/*notify*/}
+            <div className="position-relative pointer">
+              <MdNotificationsNone size={30} className="text-white" />
+              <span className={style.length}>0</span>
+            </div>
           </div>
-          {/*notify*/}
-          <div className="position-relative pointer">
-            <MdNotificationsNone size={30} className="text-white" />
-            <span className={style.length}>0</span>
-          </div>
+        </div>
+        <div className="w-100 main-dash">
+          <div className="container-fluid pt-2">{children}</div>
         </div>
       </div>
     </div>
