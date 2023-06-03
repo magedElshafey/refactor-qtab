@@ -21,6 +21,7 @@ import { openCart } from "../../../Redux/Cart";
 import { dispatchLogout } from "../../../Redux/Auth.js";
 import Swal from "sweetalert2";
 import Spinner from "../../../Components/spinner/Spinner";
+import { useNavigate } from "react-router-dom";
 // fetcher function
 const logout = (data) => {
   return request({ url: "/user/logout", method: "post", data });
@@ -30,6 +31,7 @@ const footerDetails = () => {
   return request({ url: "/mainpage" });
 };
 const Website = ({ children }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.Cart.cartItems);
   const { isLogin } = useSelector((state) => state.Auth);

@@ -14,6 +14,7 @@ import Products from "./Pages/Products";
 import Product from "./Pages/Product";
 import Reg from "./Pages/Reg";
 import CartSidebar from "./Components/cart/CartSidebar";
+import Dashboard from "./Pages/Dashboard";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -55,6 +56,9 @@ const App = () => {
           </Routes>
           <Routes>
             <Route path="/reg" element={<Reg />} />
+          </Routes>
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </Router>
       </QueryClientProvider>
