@@ -24,7 +24,7 @@ const DeleteCardBtn = ({ item }) => {
         console.log(data);
         if (data?.data.status) {
           dispatch(deleteCard(item));
-          window.location.reload();
+          refetch();
         }
       },
       onError: (data) => {

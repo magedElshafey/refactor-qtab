@@ -1,0 +1,98 @@
+.mainContainer {
+    background-color: white;
+  }
+  .imgContainer {
+  width: 100%;
+  height: 500px;
+   position: relative;
+  margin-bottom: 20px;
+  overflow: hidden;
+ 
+}
+.mainImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.infoContent {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+}
+.title {
+  width: 250px;
+  background-color: white;
+  height: 50px;
+  padding: 7px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.jobTitle {
+  background-color: white;
+  height: 30px;
+  padding: 7px 15px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sectionContainer {
+  width: 90%;
+  margin: 40px auto;
+}
+.contactContainer {
+  position: relative;
+}
+.contactContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 1px;
+  background-color: gray;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+.firstContainer {
+  border-bottom: 1px solid gray;
+}
+.btn {
+  height: 35px;
+  color: white;
+  background-color: rgb(3, 3, 58);
+  border: none;
+  padding: 7px 15px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  margin: 20px auto 0;
+}
+.icon {
+  cursor: pointer;
+
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.webLink {
+  text-decoration: none;
+  color: gray !important;
+}

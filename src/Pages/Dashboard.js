@@ -10,9 +10,7 @@ const getCards = () => {
   return request({ url: "/statistics/card" });
 };
 const Dashboard = () => {
-  const { isLoading, data, isError, error } = useQuery("get-cards", getCards, {
-    staleTime: 180000,
-  });
+  const { isLoading, data, isError, error } = useQuery("get-cards", getCards);
   if (isLoading) {
     return <Spinner />;
   }

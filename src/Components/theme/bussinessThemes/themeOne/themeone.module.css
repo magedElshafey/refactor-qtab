@@ -1,0 +1,118 @@
+.mainContainer {
+    background: linear-gradient(to right bottom  , #101437 , #44204c);
+    overflow: hidden;
+  }
+
+.imgContainer {
+  width: 100%;
+   height: 250px; 
+
+  position: relative; 
+}
+.mainImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  /* padding: 7px 15px; */
+  padding: 7px;
+  object-fit: cover;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.personalContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  -webkit-transform: translate(-50% , -50%);
+  -moz-transform: translate(-50% , -50%);
+  -ms-transform: translate(-50% , -50%);
+  -o-transform: translate(-50% , -50%);
+}
+.profileContainer {
+  width: 200px;
+  height: 200px ;
+
+  background: linear-gradient(to right, #4da5dd 50%, #7e7fbc, #df408e ) !important;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.jobTitle {
+  color: #4c6d99;
+  font-weight: bold;
+}
+.box {
+  width: 50px;
+  height: 50px;
+  background-color: #3a1c49;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.icon {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+    color: white;
+}
+.icon:hover { color: white;}
+.mainBox {
+  background-color: #1e1d3f;
+  border-radius: 18px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+}
+.emailBox , .phoneBox , .locationBox , .websiteBox {
+  width: 50px;
+  height: 50px;
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.emailBox {
+   background-color: #1d2e54;
+}
+.phoneBox {
+  background-color: #321f4d;
+}
+.locationBox {
+  background-color: #3a1c49;
+}
+.websiteBox {
+  background-color: #282551;
+}
+.emailTitle {
+  color: #4e4d6f;
+}
+.emailIcon {
+  color: #4abff6;
+}
+.phoneIcon {
+  color: #e74ce9;
+}
+.locationIcon {
+  color: #fd2e81;
+}
+.websiteIcon {
+  color: #8f5ff8;
+}
