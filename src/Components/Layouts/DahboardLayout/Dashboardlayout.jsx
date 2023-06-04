@@ -13,9 +13,11 @@ import {
 import { BsCardImage } from "react-icons/bs";
 import avatar from "../../../assets/pexels-photo-941693.jpeg";
 import { MdNotificationsNone } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { openModal } from "../../../Redux/Cards";
 const Dashboardlayout = ({ children }) => {
   const { cartItems } = useSelector((state) => state.Cart);
+  const dispatch = useDispatch();
   return (
     <div className="d-flex">
       {/*sidebar*/}
@@ -57,10 +59,13 @@ const Dashboardlayout = ({ children }) => {
             </HashLink>
           </li>
           <li className="mb-3">
-            <HashLink className="dash-link d-flex gap-1 align-items-center">
+            <p
+              onClick={() => dispatch(openModal())}
+              className="pointer m-0 p-0 dash-link d-flex gap-1 align-items-center"
+            >
               <AiOutlineFolderAdd size={15} />
               <span>Add card</span>
-            </HashLink>
+            </p>
           </li>
           <li className="mb-3">
             <HashLink

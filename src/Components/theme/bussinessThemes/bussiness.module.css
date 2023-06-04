@@ -1,0 +1,9 @@
+.mainImg {
+    width: 300px;
+    min-height: 100vh;
+    object-fit: contain;
+    cursor: pointer;
+}
+.border {
+    border: 1px solid var(--secondColor);
+}

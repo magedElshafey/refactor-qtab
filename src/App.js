@@ -15,6 +15,9 @@ import Product from "./Pages/Product";
 import Reg from "./Pages/Reg";
 import CartSidebar from "./Components/cart/CartSidebar";
 import Dashboard from "./Pages/Dashboard";
+import CardModal from "./Components/Layouts/cardModal/CardModal";
+import Theme from "./Pages/Theme";
+import CreateBussinessCard from "./Pages/CreateBussinessCard";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -39,9 +42,9 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <Router>
           <ScrollToTopAfterChangePage />
-
           <Btns />
           <CartSidebar />
+          <CardModal />
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
@@ -59,6 +62,15 @@ const App = () => {
           </Routes>
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+          <Routes>
+            <Route path="/card/:type/:lang" element={<Theme />} />
+          </Routes>
+          <Routes>
+            <Route
+              path="/bussiness/create/:id"
+              element={<CreateBussinessCard />}
+            />
           </Routes>
         </Router>
       </QueryClientProvider>

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import Swal from "sweetalert2";
 const initialState = {
   cards: JSON.parse(window.localStorage.getItem("card")) || [],
+  modalIsOpen: false,
 };
 const cardSlice = createSlice({
   name: "cardSlice",
@@ -26,7 +27,14 @@ const cardSlice = createSlice({
       });
       localStorage.setItem("card", JSON.stringify(state.cards));
     },
+    openModal: (state) => {
+      state.modalIsOpen = true;
+    },
+    closeModal: (state) => {
+      state.modalIsOpen = false;
+    },
   },
 });
-export const { addNewCard, deleteCard } = cardSlice.actions;
+export const { addNewCard, deleteCard, openModal, closeModal } =
+  cardSlice.actions;
 export default cardSlice.reducer;
