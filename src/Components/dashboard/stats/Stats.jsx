@@ -24,12 +24,12 @@ const data = [
   { name: "Nov", uv: 2390 },
   { name: "Dec", uv: 3490 },
 ];
-const Stats = ({ charts, message, visits, share }) => {
-  console.log(charts);
+const Stats = ({ charts}) => {
+ 
   return (
     <div className="w-100 d-flex flex-column gap-3 align-items-center">
       {/*icons*/}
-      <Icons message={message} visits={visits} share={share} />
+   
       <div
         style={{
           width: "100%",

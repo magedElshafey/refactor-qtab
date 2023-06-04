@@ -18,6 +18,8 @@ import Dashboard from "./Pages/Dashboard";
 import CardModal from "./Components/Layouts/cardModal/CardModal";
 import Theme from "./Pages/Theme";
 import CreateBussinessCard from "./Pages/CreateBussinessCard";
+import AllCards from "./Pages/AllCards";
+import CardDetails from "./Pages/CardDetails";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -71,6 +73,12 @@ const App = () => {
               path="/bussiness/create/:id"
               element={<CreateBussinessCard />}
             />
+          </Routes>
+          <Routes>
+            <Route path="/cards" element={<AllCards />} />
+          </Routes>
+          <Routes>
+            <Route path="/dashboard/cards/:id" element={<CardDetails />} />
           </Routes>
         </Router>
       </QueryClientProvider>

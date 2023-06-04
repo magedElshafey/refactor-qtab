@@ -5,6 +5,7 @@ import { request } from "../Components/utils/axios-utils";
 import Spinner from "../Components/spinner/Spinner.jsx";
 import Swal from "sweetalert2";
 import CardDetails from "../Components/dashboard/cardDetails/CardDetails";
+import Icons from "../Components/dashboard/icons/Icons";
 import Stats from "../Components/dashboard/stats/Stats";
 const getCards = () => {
   return request({ url: "/statistics/card" });
@@ -31,13 +32,13 @@ const Dashboard = () => {
               <div className="col-12 col-md-4 mb-3 mb-md-0">
                 <CardDetails data={item} />
               </div>
-              <div className="col-12 col-md-7 mb-3 mb-md-0">
-                <Stats
+              <div className="col-12 col-md-7 mb-3 mb-md-0 d-flex flex-column gap-3 align-items-center">
+                <Icons
+                  message={item.message}
                   visits={item.visits}
                   share={item.share}
-                  message={item.message}
-                  charts={item.stats}
                 />
+                <Stats charts={item.stats} />
               </div>
             </div>
           ))

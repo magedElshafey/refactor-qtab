@@ -1,0 +1,12 @@
+.btn {
+    display: inline-block;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 7px 15px;
+    text-transform: capitalize;
+}
+.active {
+    border-bottom: 1px solid var(--secondColor) !important;
+    color: var(--secondColor);
+    font-weight: bold;
+}

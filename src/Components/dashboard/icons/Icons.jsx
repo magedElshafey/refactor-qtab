@@ -3,7 +3,7 @@ import style from "./icons.module.css";
 import { HiOutlineCursorClick } from "react-icons/hi";
 import { GrShare } from "react-icons/gr";
 import { AiOutlineEye } from "react-icons/ai";
-const Icons = ({ message, visits, share }) => {
+const Icons = ({ share, message, visits }) => {
   return (
     <div className="d-flex justify-content-center gap-3 flex-wrap">
       <div
