@@ -23,7 +23,7 @@ const AllCards = () => {
   return (
     <div>
       <Dashboardlayout>
-        <div className="container py-5">
+        <div className="py-5">
           {!data.data.data.length && (
             <div className="fw-bold text-center fs-4">No cards Yet</div>
           )}
