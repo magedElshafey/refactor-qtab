@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Dashboardlayout from "../Components/Layouts/DahboardLayout/Dashboardlayout";
 import BussinessForm from "../Components/createCard/bussinessForm/BussinessForm";
 import { useParams } from "react-router-dom";
-import ThemeOne from "../Components/theme/bussinessThemes/themeOne/ThemeOne";
+import ThemeOne from "../Components/theme/bussinessThemes/themeOne/ThemeOne.jsx";
 import ThemeTwo from "../Components/theme/bussinessThemes/themeTwo/ThemeTwo";
 import ThemeThree from "../Components/theme/bussinessThemes/themeThree/ThemeThree";
 const CreateBussinessCard = () => {
@@ -58,7 +58,7 @@ const CreateBussinessCard = () => {
           dir={lang === "en" ? "ltr" : "rtl"}
           className="py-5 row justify-content-center gap-5"
         >
-          <div className="col-12 col-md-7">
+          <div className="col-12 col-md-6">
             <BussinessForm
               lang={lang}
               setName={setName}
@@ -146,7 +146,7 @@ const CreateBussinessCard = () => {
               setPinterestError={setPinterestError}
             />
           </div>
-          <div className="col-12 col-md-4">
+          <div className="col-12 col-md-5">
             {parseInt(params.id) === 1 && (
               <ThemeOne
                 name={name}

@@ -22,7 +22,7 @@ const DeleteCardBtn = ({ item }) => {
     {
       onSuccess: (data) => {
         console.log(data);
-        if (data?.data.status) {
+        if (data?.data?.data?.status) {
           dispatch(deleteCard(item));
           refetch();
         }
