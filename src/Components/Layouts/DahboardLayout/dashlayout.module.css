@@ -50,3 +50,49 @@
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
+.navContainer {
+    width: 100vw;
+    height: 80px;
+    background-color: #23262e;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+}
+.logoMob {
+    width: 80px;
+    height: 50px;
+    object-fit: cover;
+    margin-top: 10px !important;
+}
+.mainIcon {
+    cursor: pointer;
+    color: var(--secondColor) !important;
+  font-size: 22px !important;
+}
+.mobBar {
+    background-color: var(--mainColor);
+    position: fixed;
+    top: 0;
+    width: 320px;
+    height: 100vh;
+    z-index: 999999 !important;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+}
+.show {
+    left: 0;
+}
+.hide {
+    left: -300%;
+}
+.closeIcon {
+    position: absolute;
+ right: 5px;
+ top: 5px;
+ color: var(--secondColor);
+}

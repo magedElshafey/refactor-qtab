@@ -15,7 +15,7 @@
 .logo {
     width: 80px;
     max-height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 .inp {
     padding: 15px 7px ;
@@ -56,18 +56,14 @@
     justify-content: center;
     align-items: center;
     background-color: var(--secondColor);
-    padding: 7px;
+    padding: 7px 15px;
     text-transform: capitalize;
-    border-radius: 8px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
+  
 }
 .icon {
   color: white !important;
   cursor: pointer;
-  position: relative;
+  
 }
 
 .length {
@@ -78,6 +74,7 @@
   position: absolute;
   top: -5px;
   display: flex;
+  padding: 3px;
   justify-content: center;
   align-items: center;
   left: -5px;
@@ -115,6 +112,9 @@
    visibility: hidden;
   right: -300%;
   opacity: 0;
+}
+.searchMob {
+  color: var(--secondColor);
 }
 /* end mobile view */
 /* end nav bar */

@@ -195,4 +195,8 @@ body {
   min-height: calc(100vh - 100px);
   
 }
+.main-dash-mob {
+  background-color: #ececec;
+  min-height: 100vh;
+}
 /* end dashboard */

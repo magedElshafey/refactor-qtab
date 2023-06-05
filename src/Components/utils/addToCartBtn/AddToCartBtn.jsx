@@ -11,11 +11,13 @@ const addProduct = (data) => {
 };
 
 const AddToCartBtn = ({ item }) => {
+  console.log("data from cart btn", item);
   const dispatch = useDispatch();
   const naviagte = useNavigate();
   const { isLoading, mutate } = useMutation(addProduct, {
     onSuccess: (data) => {
-      if (data?.data.status) {
+      console.log("data after success", data.data);
+      if (data.data.status) {
         dispatch(addToCart(item));
       }
     },
@@ -53,7 +55,7 @@ const AddToCartBtn = ({ item }) => {
     }
   };
   return (
-    <button onClick={handleClick} disabled={isLoading} className={style.btn}>
+    <button onClick={handleClick} className={style.btn}>
       Add to cart
     </button>
   );

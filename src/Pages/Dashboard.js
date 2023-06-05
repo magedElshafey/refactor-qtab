@@ -21,7 +21,7 @@ const Dashboard = () => {
       showCancelButton: false,
       title: error.message,
     });
-  } 
+  }
 
   return (
     <div>
@@ -29,7 +29,7 @@ const Dashboard = () => {
         {data?.data?.data.length ? (
           data.data.data.map((item, index) => (
             <div key={index} className="row  mb-4 justify-content-center">
-              <div className="col-12 col-md-6 mb-3 mb-md-0">
+              <div className="col-12 col-md-6 col-lg-4 mb-3 mb-md-0">
                 <CardDetails data={item} />
               </div>
               <div className="col-12 col-md-6 mb-3 mb-md-0 d-flex flex-column gap-3 align-items-center">

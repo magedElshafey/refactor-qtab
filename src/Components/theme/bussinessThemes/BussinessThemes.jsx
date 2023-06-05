@@ -37,7 +37,7 @@ const BussinessThemes = () => {
     return <h2>{error.message}</h2>;
   }
   return (
-    <div className="d-flex gap-5 flex-wrap justify-content-center">
+    <div className="d-flex gap-3 flex-wrap justify-content-center">
       {data?.data?.data.map((item, index) => (
         <div
           key={index}

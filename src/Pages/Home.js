@@ -17,7 +17,6 @@ const Home = () => {
     cacheTime: 1800000,
     staleTime: 1800000,
   });
-  console.log("data from home page", data?.data);
   return (
     <div>
       {isLoading ? (

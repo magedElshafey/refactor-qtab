@@ -58,7 +58,7 @@ const CreateBussinessCard = () => {
           dir={lang === "en" ? "ltr" : "rtl"}
           className="py-5 row justify-content-center"
         >
-          <div className="col-12 col-md-5">
+          <div className="col-12 col-md-5 mb-4 mb-md-0">
             <BussinessForm
               lang={lang}
               setName={setName}

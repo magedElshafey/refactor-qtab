@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import style from "./website.module.css";
-import logo from "../../../assets/white-logo.png";
 import { HashLink } from "react-router-hash-link";
-
 import { request } from "../../utils/axios-utils";
 import { useQuery, useMutation } from "react-query";
 import {
@@ -21,7 +19,8 @@ import { openCart } from "../../../Redux/Cart";
 import { dispatchLogout } from "../../../Redux/Auth.js";
 import Swal from "sweetalert2";
 import Spinner from "../../../Components/spinner/Spinner";
-import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
 // fetcher function
 const logout = (data) => {
   return request({ url: "/user/logout", method: "post", data });
@@ -31,7 +30,6 @@ const footerDetails = () => {
   return request({ url: "/mainpage" });
 };
 const Website = ({ children }) => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.Cart.cartItems);
   const { isLogin } = useSelector((state) => state.Auth);
@@ -80,6 +78,16 @@ const Website = ({ children }) => {
         <Spinner />
       ) : (
         <div>
+          <Helmet>
+            <link rel="icon" href={footer?.data.data.general.logo} />
+
+            <meta
+              name="description"
+              content={footer?.data.data.general.description}
+            />
+
+            <title>{footer?.data.data.general.title}</title>
+          </Helmet>
           {/*start navbar*/}
           {/*start larg screen*/}
           <div className="d-none d-md-block">
@@ -90,12 +98,12 @@ const Website = ({ children }) => {
                   {/*logo */}
                   <img
                     alt="logo/img"
-                    src={logo}
+                    src={footer?.data.data.general.logo}
                     className={style.logo}
                     loading="lazy"
                   />
                   {/*main Links*/}
-                  <ul className="p-0  text-white d-flex align-items-center gap-3">
+                  <ul className="p-0   text-white d-flex align-items-center gap-3">
                     <li>
                       <HashLink className="link fw-bold" to="/">
                         Home
@@ -131,22 +139,19 @@ const Website = ({ children }) => {
                     </li>
                   </ul>
                 </div>
-                {/*search and auth btns*/}
-                <div className="d-flex align-items-center gap-3">
-                  {/*search*/}
-                  <div className="position-relative">
+                <div className="d-flex justify-content-center align-items-center gap-3">
+                  <div className="position-relative m-0 p-0">
                     <input
                       dir="rtl"
                       type="text"
                       className={style.inp}
                       placeholder="Search for something"
                     />
-                    <div className={style.searchContainer}>
+                    <div className={`m-0 p-0 ${style.searchContainer}`}>
                       <AiOutlineSearch />
                     </div>
                   </div>
-                  {/*auth btns*/}
-                  <button className={style.loginBtn}>
+                  <button className={`m-0 p-0 ${style.loginBtn}`}>
                     {isLogin ? (
                       <HashLink onClick={handleLogout} to="/" className="link">
                         log out
@@ -157,16 +162,18 @@ const Website = ({ children }) => {
                       </HashLink>
                     )}
                   </button>
-                  <button className={style.regBtn}>
-                    <HashLink to="/reg" className="link">
-                      sign up
-                    </HashLink>
-                  </button>
-                  <div className="position-relative">
+                  {isLogin ? null : (
+                    <button className={` ${style.regBtn}`}>
+                      <HashLink to="/reg" className="t-none text-white">
+                        sign up
+                      </HashLink>
+                    </button>
+                  )}
+                  <div className="position-relative mx-3 p-0">
                     <AiOutlineShoppingCart
                       onClick={() => dispatch(openCart())}
                       size={20}
-                      className={style.icon}
+                      className={`m-0 p-0 ${style.icon}`}
                     />
                     <span className={style.length}>{cartItems.length}</span>
                   </div>
@@ -184,14 +191,14 @@ const Website = ({ children }) => {
                   {/*icon*/}
                   {!showMenu && (
                     <AiOutlineMenu
-                      size={30}
-                      className={` ${style.mainIcon}`}
+                      size={20}
+                      className={`m-0 p-0 ${style.mainIcon}`}
                       onClick={() => setShowMenu(true)}
                     />
                   )}
                   <img
                     alt="logo/img"
-                    src={logo}
+                    src={footer?.data.data.general.logo}
                     className={`m-0 p-0 ${style.logo}`}
                     loading="lazy"
                   />
@@ -199,23 +206,33 @@ const Website = ({ children }) => {
                 {/*auth btn and carts*/}
                 <div className="d-flex align-items-center gap-3">
                   <button className={style.loginBtn}>
-                    <HashLink to="/login" className="link">
-                      log in
-                    </HashLink>
+                    {isLogin ? (
+                      <HashLink onClick={handleLogout} to="/" className="link">
+                        log out
+                      </HashLink>
+                    ) : (
+                      <HashLink to="/login" className="link">
+                        log in
+                      </HashLink>
+                    )}
                   </button>
-                  <button className={style.regBtn}>
-                    <HashLink to="/reg" className="link">
-                      sign up
-                    </HashLink>
-                  </button>
-                  <div className="position-relative">
+                  {isLogin ? null : (
+                    <button className={style.regBtn}>
+                      <HashLink to="/reg" className="link">
+                        sign up
+                      </HashLink>
+                    </button>
+                  )}
+
+                  <span className="position-relative">
                     <AiOutlineShoppingCart
                       onClick={() => dispatch(openCart())}
-                      size={30}
+                      size={20}
                       className={style.icon}
                     />
                     <span className={style.length}>{cartItems.length}</span>
-                  </div>
+                  </span>
+                  <AiOutlineSearch className={style.searchMob} size={20} />
                 </div>
               </div>
             </div>
@@ -292,7 +309,7 @@ const Website = ({ children }) => {
           </div>
           {/*end mobile view*/}
           {/*end navbar*/}
-          <div className="webMain">{children}</div>
+          <div className="webMain ">{children}</div>
           {/*start footer*/}
           <div>
             <div className={style.footerContainer}>
@@ -352,3 +369,13 @@ const Website = ({ children }) => {
 };
 
 export default Website;
+/*
+ 
+                <div >
+                
+                  
+              
+                 
+                  
+                </div>
+*/

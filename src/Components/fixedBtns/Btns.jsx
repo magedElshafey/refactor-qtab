@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./btns.module.css";
 import whats from "../../assets/icons8-whatsapp-48.png";
+import { BsFillEnvelopeFill } from "react-icons/bs";
 const Btns = () => {
   return (
     <div>
@@ -11,7 +12,7 @@ const Btns = () => {
       </div>
       <div className={style.box}>
         <a href="/#contact" className={style.cont}>
-          Contact
+          <BsFillEnvelopeFill size={20} />
         </a>
       </div>
     </div>
