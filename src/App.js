@@ -21,6 +21,7 @@ import CreateBussinessCard from "./Pages/CreateBussinessCard";
 import AllCards from "./Pages/AllCards";
 import CardDetails from "./Pages/CardDetails";
 import Leads from "./Pages/Leads";
+import EditCard from "./Pages/EditCard";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -80,6 +81,9 @@ const App = () => {
           </Routes>
           <Routes>
             <Route path="/dashboard/cards/:id" element={<CardDetails />} />
+          </Routes>
+          <Routes>
+            <Route path="/card/bussiness/edit/:id" element={<EditCard />} />
           </Routes>
           <Routes>
             <Route path="/leads" element={<Leads />} />

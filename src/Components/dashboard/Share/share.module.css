@@ -1,0 +1,59 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999999;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+}
+.showOverlay {
+    left: 0;
+}
+.hideOverlay {
+    left: -300%;
+}
+.modal {
+    position: relative;
+    background-color: white;
+    padding:  15px 7px;
+    width: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 5s;
+    -webkit-transition: 5s;
+    -moz-transition: 5s;
+    -ms-transition: 5s;
+    -o-transition: 5s;
+}
+.show {
+    opacity: 1;
+    visibility: visible;
+}
+.hide {
+    visibility: hidden;
+    opacity: 0;
+}
+.face {
+  color: #1877f2 !important;
+}
+.whats {
+  color: #4aae20 !important;
+}
+.twitter {
+  color: #1da1f2 !important;
+}
+.closeIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}

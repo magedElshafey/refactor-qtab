@@ -21,18 +21,18 @@ const Dashboard = () => {
       showCancelButton: false,
       title: error.message,
     });
-  }
+  } 
 
   return (
     <div>
       <Dashboardlayout>
         {data?.data?.data.length ? (
           data.data.data.map((item, index) => (
-            <div key={index} className="row gap-4 mb-4 justify-content-center">
-              <div className="col-12 col-md-4 mb-3 mb-md-0">
+            <div key={index} className="row  mb-4 justify-content-center">
+              <div className="col-12 col-md-6 mb-3 mb-md-0">
                 <CardDetails data={item} />
               </div>
-              <div className="col-12 col-md-7 mb-3 mb-md-0 d-flex flex-column gap-3 align-items-center">
+              <div className="col-12 col-md-6 mb-3 mb-md-0 d-flex flex-column gap-3 align-items-center">
                 <Icons
                   message={item.message}
                   visits={item.visits}

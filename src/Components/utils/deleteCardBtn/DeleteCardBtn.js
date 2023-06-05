@@ -1,46 +1,35 @@
 import React from "react";
-import { useQuery } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { request } from "../axios-utils";
 import { useDispatch } from "react-redux";
 import { deleteCard } from "../../../Redux/Cards";
 import Swal from "sweetalert2";
 import style from "../../dashboard/cardDetails/cardDetails.module.css";
+import Spinner from "../../spinner/Spinner";
 const handleDelte = (id) => {
   return request({
-    url: `/Dashboard/delete/cards`,
-
-    headers: {
-      card: id,
-    },
+    url: `/Dashboard/delete/cards/${id}`,
+    method: "POST",
   });
 };
 const DeleteCardBtn = ({ item }) => {
+  const query = useQueryClient();
   const dispatch = useDispatch();
-  const { data, refetch } = useQuery(
-    "delete-card",
-    () => handleDelte(item.id),
-    {
-      onSuccess: (data) => {
-        console.log(data);
-        if (data?.data?.data?.status) {
-          dispatch(deleteCard(item));
-          refetch();
-        }
-      },
-      onError: (data) => {
-        console.log(data);
-        Swal.fire({
-          title: "there is an error please try again",
-          icon: "error",
-          position: "center",
-        });
-      },
-      enabled: false,
+  const { isLoading, mutate } = useMutation(() => handleDelte(item.id), {
+    onSuccess: () => {
+      query.invalidateQueries("get-cards");
+    },
+  });
+  const handleClick = () => {
+    if (isLoading) {
+      return <Spinner />;
+    } else {
+      const body = null;
+      mutate(body);
     }
-  );
-
+  };
   return (
-    <button onClick={refetch} className={`${style.btn} ${style.delete}`}>
+    <button onClick={handleClick} className={`${style.btn} ${style.delete}`}>
       Delete
     </button>
   );

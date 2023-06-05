@@ -56,9 +56,9 @@ const CreateBussinessCard = () => {
       <Dashboardlayout>
         <div
           dir={lang === "en" ? "ltr" : "rtl"}
-          className="py-5 row justify-content-center gap-5"
+          className="py-5 row justify-content-center"
         >
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-5">
             <BussinessForm
               lang={lang}
               setName={setName}
@@ -146,7 +146,7 @@ const CreateBussinessCard = () => {
               setPinterestError={setPinterestError}
             />
           </div>
-          <div className="col-12 col-md-5">
+          <div className="col-12 col-md-7">
             {parseInt(params.id) === 1 && (
               <ThemeOne
                 name={name}

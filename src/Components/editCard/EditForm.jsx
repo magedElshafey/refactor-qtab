@@ -1,49 +1,30 @@
 import React from "react";
-import MainBtn from "../../utils/mainBtn/MainBtn";
+import MainBtn from "../utils/mainBtn/MainBtn";
+import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
-import { request } from "../../utils/axios-utils";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { addNewCard } from "../../../Redux/Cards";
-import Swal from "sweetalert2";
-import Spinner from "../../spinner/Spinner";
-const handleCreateCard = (data) => {
-  return request({ url: "/create", method: "POST", data });
-};
-const BussinessForm = ({
+import { useParams, useNavigate } from "react-router-dom";
+import Spinner from "../spinner/Spinner";
+const token = JSON.parse(window.localStorage.getItem("userToken"));
+
+const EditForm = ({
   lang,
   name,
-  personal_number,
   whatsApp_number,
+  personal_number,
   business_number,
-  job_title,
   email,
-  website,
-  portfolio,
+  bio,
+  job_title,
+  photo,
+  theme,
+  Botim,
   facebook,
   instgram,
   linked_in,
-  Botim,
-  twitter,
+  portfolio,
   school_account,
-  photo,
-  bio,
-  theme_id,
-  qr,
-  nameError,
-  whatsNumError,
-  personalNumError,
-  bessinessError,
-  emailError,
-  faceBookError,
-  instaError,
-  linkedinError,
-  botimError,
-  schollAccountError,
-  photoError,
-  websiteError,
-  portfolioError,
-  twitterError,
+  website,
+  twitter,
   setName,
   setPersonalNumber,
   setWhatsNum,
@@ -58,14 +39,14 @@ const BussinessForm = ({
   setTwitter,
   setBotim,
   setSchollAccount,
-  setPhoto,
   setBio,
-  setQr,
+  setPhoto,
   setNameError,
   setWhatsNumError,
   setPersonalNumError,
   setBessinessError,
   setEmailError,
+  setJobTitleError,
   setPortfolioError,
   setWebsiteError,
   setFacebookError,
@@ -75,79 +56,24 @@ const BussinessForm = ({
   setTwitterError,
   setSchoolAccountError,
   setPhotoError,
-  location,
-  setLocation,
-  tender,
-  setTender,
-  tenderError,
-  setTenderError,
-  snap,
-  setSnap,
-  snapError,
-  setSnapError,
-  tiktok,
-  setTikTok,
-  tiktokError,
-  setTiktokError,
-  pinterest,
-  setPinterest,
-  pinterestError,
-  setPinterestError,
+  nameError,
+  whatsNumError,
+  personalNumError,
+  bessinessError,
+  emailError,
+  jobTitleError,
+  faceBookError,
+  instaError,
+  linkedinError,
+  botimError,
+  schollAccountError,
+  photoError,
+  websiteError,
+  portfolioError,
+  twitterError,
+  setTheme,
+  id,
 }) => {
-  // hooks
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const query = useQueryClient();
-  const { isLoading, mutate } = useMutation(handleCreateCard, {
-    onSuccess: (data) => {
-      dispatch(addNewCard(data.data));
-      setQr(data.data.qrcode);
-      Swal.fire({
-        icon: "success",
-        title: "Your Card Created Successfully",
-        position: "top-center",
-      });
-      query.invalidateQueries("get-cards");
-      navigate(`/dashboard`);
-    },
-    onError: (data) => {
-      Swal.fire({
-        icon: "error",
-        title: data.data.message,
-        position: "center",
-      });
-    },
-  });
-  const handleClick = (e) => {
-    e.preventDefault();
-    if (nameError || personalNumError || emailError || photoError) {
-      return;
-    }
-    if (isLoading) {
-      return <Spinner />;
-    } else {
-      const body = {
-        name,
-        personal_number,
-        whatsApp_number,
-        business_number,
-        email,
-        job_title,
-        website,
-        portfolio,
-        facebook,
-        linked_in,
-        instgram,
-        Botim,
-        twitter,
-        bio,
-        school_account,
-        photo,
-        theme_id,
-      };
-      mutate(body);
-    }
-  };
   // validation
   function validateText(v) {
     if (!v.trim() && lang === "en") {
@@ -281,24 +207,83 @@ const BussinessForm = ({
       setPhotoError("Invalid file type. Please select an image file.");
     }
   };
-  const handleTenderChange = (e) => {
-    setTender(e.target.value);
-    setTenderError(validateLinks(e.target.value));
-  };
-  const handlePinterestChange = (e) => {
-    setPinterest(e.target.value);
-    setPinterestError(validateLinks(e.target.value));
-  };
-  const handleSnapChange = (e) => {
-    setSnap(e.target.value);
-    setSnapError(validateLinks(e.target.value));
-  };
-  const handleTiktokChange = (e) => {
-    setTikTok(e.target.value);
-    setTiktokError(validateLinks(e.target.value));
+  const navigate = useNavigate();
+  const params = useParams();
+  const query = useQueryClient();
+  const { isLoading, mutate } = useMutation(
+    (data) => {
+      return axios.post(
+        "https://qtap-dashboard.qutap.co/api/Dashboard/edit/card",
+        data,
+        {
+          headers: {
+            lang: "en",
+            "X-CSRF-Token": document
+              .querySelector('meta[name="csrf-token"]')
+              .getAttribute("content"),
+            "Access-Control-Allow-Credentials": "true",
+            credentials: "include",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+            card: id,
+          },
+        }
+      );
+    },
+    {
+      onSuccess: () => {
+        navigate("/dashboard");
+        query.invalidateQueries("get-cards");
+      },
+    }
+  );
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (isLoading) {
+      return <Spinner />;
+    }
+    if (nameError || emailError || personalNumError) {
+      return;
+    } else {
+      const data = {
+        name,
+        personal_number,
+        whatsApp_number,
+        business_number,
+        email,
+        job_title,
+        website,
+        portfolio,
+        facebook,
+        linked_in,
+        instgram,
+        Botim,
+        twitter,
+        bio,
+        school_account,
+        photo,
+        theme_id: theme,
+      };
+
+      mutate(data);
+    }
   };
   return (
     <form className="p-4 mainForm">
+      <div className="mb-3">
+        <label className="label d-block mb-1" htmlFor="Theme">
+          {lang === "en" ? "Theme" : "التصميم"}
+        </label>
+        <input
+          onChange={(e) => setTheme(e.target.value)}
+          type="number"
+          placeholder={lang === "en" ? "enter your name" : "ادخل الإسم"}
+          className="inp"
+          id="Theme"
+          value={theme}
+        />
+        <p className="error py-2">{nameError}</p>
+      </div>
       <div className="mb-3">
         <label className="label d-block mb-1" htmlFor="name">
           {lang === "en" ? "Name" : "الاسم"}
@@ -309,6 +294,7 @@ const BussinessForm = ({
           placeholder={lang === "en" ? "enter your name" : "ادخل الإسم"}
           className="inp"
           id="name"
+          value={name}
         />
         <p className="error py-2">{nameError}</p>
       </div>
@@ -317,6 +303,7 @@ const BussinessForm = ({
           {lang === "en" ? "personal number" : "الرقم الشخصي"}
         </label>
         <input
+          value={personal_number}
           onChange={handleChangePersonalNumber}
           type="number"
           placeholder={
@@ -333,6 +320,7 @@ const BussinessForm = ({
           {lang === "en" ? "Whatsapp number" : "رقم الواتساب"}
         </label>
         <input
+          value={whatsApp_number}
           onChange={handleChangeWhatsapp}
           type="number"
           placeholder={
@@ -348,6 +336,7 @@ const BussinessForm = ({
           {lang === "en" ? "bussiness number" : "رقم العمل"}
         </label>
         <input
+          value={business_number}
           onChange={handleChangeBussinessNum}
           type="number"
           placeholder={
@@ -364,6 +353,7 @@ const BussinessForm = ({
           {lang === "en" ? "email" : "البريد الإلكتروني"}
         </label>
         <input
+          value={email}
           onChange={handleChangeEmail}
           type="email"
           placeholder={
@@ -381,6 +371,7 @@ const BussinessForm = ({
           {lang === "en" ? "job title" : "المسمي الوظيفي"}
         </label>
         <input
+          value={job_title}
           onChange={handleChangeJobTitle}
           type="text"
           placeholder={
@@ -396,6 +387,7 @@ const BussinessForm = ({
           {lang === "en" ? "portfolio" : "معرض الأعمال"}
         </label>
         <input
+          value={portfolio}
           onChange={handleChangePortfolio}
           type="link"
           placeholder={
@@ -413,6 +405,7 @@ const BussinessForm = ({
           {lang === "en" ? "website" : "الموقع الشخصي"}
         </label>
         <input
+          value={website}
           onChange={handleChangeWebsite}
           type="link"
           placeholder={
@@ -431,6 +424,7 @@ const BussinessForm = ({
           {lang === "en" ? "Facebook" : "فيسبوك"}
         </label>
         <input
+          value={facebook}
           onChange={handleChangeFacebook}
           type="link"
           placeholder={
@@ -446,6 +440,7 @@ const BussinessForm = ({
           {lang === "en" ? "instagram" : "انستغرام"}
         </label>
         <input
+          value={instgram}
           onChange={handleChangeInsta}
           type="link"
           placeholder={
@@ -462,6 +457,7 @@ const BussinessForm = ({
           {lang === "en" ? "linkedin" : "لينكدان"}
         </label>
         <input
+          value={linked_in}
           onChange={handleChangeLinkedIn}
           type="link"
           placeholder={
@@ -477,6 +473,7 @@ const BussinessForm = ({
           {lang === "en" ? "twitter" : "تويتر"}
         </label>
         <input
+          value={twitter}
           onChange={handleChangeTwitter}
           type="link"
           placeholder={
@@ -493,6 +490,7 @@ const BussinessForm = ({
           {lang === "en" ? "bottim" : "بوتيم"}
         </label>
         <input
+          value={Botim}
           onChange={handleChangeBotim}
           type="link"
           placeholder={
@@ -508,6 +506,7 @@ const BussinessForm = ({
           {lang === "en" ? "i school" : "سكول"}
         </label>
         <input
+          value={school_account}
           onChange={handleChangeIScholl}
           type="link"
           placeholder={
@@ -520,6 +519,46 @@ const BussinessForm = ({
       </div>
 
       <div className="mb-3">
+        <label className="label d-block mb-1" htmlFor="bio">
+          {lang === "en" ? "bio" : "نبذة عنك"}
+        </label>
+        <input
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
+          type="text"
+          placeholder={lang === "en" ? "enter your bio" : "ادخل نبذة عنك "}
+          className="inp"
+          id="bio"
+        />
+      </div>
+
+      <div className="mb-3">
+        <label className="label d-block mb-1" htmlFor="profile">
+          {lang === "en" ? "profile photo" : "صورة شخصية"}
+        </label>
+        <input
+          onChange={handlePhotoChange}
+          type="file"
+          placeholder={
+            lang === "en" ? "enter your profile photo" : "ادخل صورة شخصية "
+          }
+          className="inp"
+          id="profile"
+        />
+        <p className="error py-2">{photoError}</p>
+      </div>
+      <div className="d-flex justify-content-center">
+        <MainBtn action={handleClick}>
+          {lang === "en" ? "Edit card" : "عدل كارت"}
+        </MainBtn>
+      </div>
+    </form>
+  );
+};
+
+export default EditForm;
+/*
+   <div className="mb-3">
         <label className="label d-block mb-1" htmlFor="tender">
           {lang === "en" ? "tender" : "تيندر"}
         </label>
@@ -581,20 +620,7 @@ const BussinessForm = ({
         />
         <p className="error py-2">{tiktokError}</p>
       </div>
-
-      <div className="mb-3">
-        <label className="label d-block mb-1" htmlFor="bio">
-          {lang === "en" ? "bio" : "نبذة عنك"}
-        </label>
-        <input
-          onChange={(e) => setBio(e.target.value)}
-          type="text"
-          placeholder={lang === "en" ? "enter your bio" : "ادخل نبذة عنك "}
-          className="inp"
-          id="bio"
-        />
-      </div>
-      <div className="mb-3">
+       <div className="mb-3">
         <label className="label d-block mb-1" htmlFor="location">
           {lang === "en" ? "location" : "عنوانك"}
         </label>
@@ -606,28 +632,4 @@ const BussinessForm = ({
           id="location"
         />
       </div>
-      <div className="mb-3">
-        <label className="label d-block mb-1" htmlFor="profile">
-          {lang === "en" ? "profile photo" : "صورة شخصية"}
-        </label>
-        <input
-          onChange={handlePhotoChange}
-          type="file"
-          placeholder={
-            lang === "en" ? "enter your profile photo" : "ادخل صورة شخصية "
-          }
-          className="inp"
-          id="profile"
-        />
-        <p className="error py-2">{photoError}</p>
-      </div>
-      <div className="d-flex justify-content-center">
-        <MainBtn action={handleClick}>
-          {lang === "en" ? "create card" : "انشئ كارت"}
-        </MainBtn>
-      </div>
-    </form>
-  );
-};
-
-export default BussinessForm;
+*/
