@@ -20,6 +20,7 @@ import Theme from "./Pages/Theme";
 import CreateBussinessCard from "./Pages/CreateBussinessCard";
 import AllCards from "./Pages/AllCards";
 import CardDetails from "./Pages/CardDetails";
+import Leads from "./Pages/Leads";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -79,6 +80,9 @@ const App = () => {
           </Routes>
           <Routes>
             <Route path="/dashboard/cards/:id" element={<CardDetails />} />
+          </Routes>
+          <Routes>
+            <Route path="/leads" element={<Leads />} />
           </Routes>
         </Router>
       </QueryClientProvider>
