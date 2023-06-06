@@ -1,3 +1,6 @@
+.cardContainer {
+  z-index: 2;
+}
 .imgContainer {
   background-color: #3ea190 !important;
   color: white !important;

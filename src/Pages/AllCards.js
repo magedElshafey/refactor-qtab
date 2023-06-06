@@ -29,9 +29,7 @@ const AllCards = () => {
           )}
           {data.data.data.length && (
             <div className="row justify-content-center align-items-center">
-              <div className="col-12 col-md-8">
-                <CardsTable data={data.data.data} />
-              </div>
+              <CardsTable data={data.data.data} />
             </div>
           )}
         </div>
@@ -41,3 +39,6 @@ const AllCards = () => {
 };
 
 export default AllCards;
+/*
+  
+*/

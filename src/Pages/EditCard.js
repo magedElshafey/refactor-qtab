@@ -75,29 +75,7 @@ const EditCard = () => {
   const params = useParams();
   const { isLoading, isError, error, data } = useQuery(
     ["edit-card", parseInt(params.id)],
-    () => editCard(parseInt(params.id)),
-    {
-      onSuccess: (data) => {
-        setName(data.data.data.name);
-        setBussinessNum(data.data.data.business_number);
-        setWhatsNum(data.data.data.whatsApp_number);
-        setPersonalNumber(data.data.data.personal_number);
-        setEmail(data.data.data.email);
-        setBio(data.data.data.bio);
-        setJobTitle(data.data.data.job_title);
-        setPhoto(data.data.data.photo);
-        setTheme(data.data.data.theme);
-        setBotim(data.data.data.botim);
-        setFaceBook(data.data.data.facebook);
-        setInsta(data.data.data.instgram);
-        setLinkedin(data.data.data.linked_in);
-        setPortfolio(data.data.data.portfolio);
-        setSchollAccount(data.data.data.school_account);
-        setTwitter(data.data.data.twitter);
-        setWebsite(data.data.data.website);
-        setId(data.data.data.id);
-      },
-    }
+    () => editCard(parseInt(params.id))
   );
   if (isLoading) {
     return <Spinner />;
@@ -108,33 +86,33 @@ const EditCard = () => {
       title: error.message,
     });
   }
-
+  //
   return (
     <div>
       <Dashboardlayout>
         <div className="container py-5">
           <div className="row justify-content-center">
-            <div className="col-12 col-md-5">
+            <div className="col-12 col-md-5 mb-4 mb-md-0">
               <EditForm
                 id={id}
                 lang={lang}
-                name={name}
-                whatsApp_number={whatsApp_number}
-                personal_number={personal_number}
-                business_number={business_number}
-                email={email}
-                bio={bio}
-                job_title={job_title}
-                photo={photo}
-                theme={theme}
-                Botim={Botim}
-                facebook={facebook}
-                instgram={instgram}
-                linked_in={linked_in}
-                portfolio={portfolio}
-                school_account={school_account}
-                website={website}
-                twitter={twitter}
+                name={data.data.data.name}
+                whatsApp_number={data.data.data.whatsApp_number}
+                personal_number={data.data.data.personal_number}
+                business_number={data.data.data.business_number}
+                email={data.data.data.email}
+                bio={data.data.data.bio}
+                job_title={data.data.data.job_title}
+                photo={data.data.data.photo}
+                theme={data.data.data.theme}
+                Botim={data.data.data.Botim}
+                facebook={data.data.data.facebook}
+                instgram={data.data.data.instgram}
+                linked_in={data.data.data.linked_in}
+                portfolio={data.data.data.portfolio}
+                school_account={data.data.data.school_account}
+                website={data.data.data.website}
+                twitter={data.data.data.twitter}
                 setName={setName}
                 setPersonalNumber={setPersonalNumber}
                 setWhatsNum={setWhatsNum}

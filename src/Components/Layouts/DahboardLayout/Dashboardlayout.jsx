@@ -167,7 +167,7 @@ const Dashboardlayout = ({ children }) => {
           </div>
         </div>
         <div className="container main-dash-mob mt-5 pt-5">
-          <div className="container pt-2">{children}</div>
+          <div>{children}</div>
         </div>
         <div
           ref={sideRef}

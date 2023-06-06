@@ -225,15 +225,14 @@ const EditForm = ({
             credentials: "include",
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
-            card: id,
+            card: params.id,
           },
         }
       );
     },
     {
-      onSuccess: () => {
-        navigate("/dashboard");
-        query.invalidateQueries("get-cards");
+      onSuccess: (data) => {
+        console.log(data);
       },
     }
   );
@@ -282,7 +281,6 @@ const EditForm = ({
           id="Theme"
           value={theme}
         />
-        <p className="error py-2">{nameError}</p>
       </div>
       <div className="mb-3">
         <label className="label d-block mb-1" htmlFor="name">
@@ -294,7 +292,6 @@ const EditForm = ({
           placeholder={lang === "en" ? "enter your name" : "ادخل الإسم"}
           className="inp"
           id="name"
-          value={name}
         />
         <p className="error py-2">{nameError}</p>
       </div>

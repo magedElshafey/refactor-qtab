@@ -59,6 +59,7 @@
     left: 0;
     display: flex;
     align-items: center;
+       z-index: 99999999 !important;
 }
 .logoMob {
     width: 80px;
@@ -73,11 +74,11 @@
 }
 .mobBar {
     background-color: var(--mainColor);
-    position: fixed;
+    position: fixed !important;
     top: 0;
     width: 320px;
     height: 100vh;
-    z-index: 999999 !important;
+    z-index: 99999999 !important;
     transition: 0.4s;
     -webkit-transition: 0.4s;
     -moz-transition: 0.4s;

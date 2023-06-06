@@ -13,8 +13,8 @@ import Share from "../Share/Share";
 const CardDetails = ({ data }) => {
   const [showShareModal, setShowShareModel] = useState(false);
   return (
-    <>
-      <div className={`position-relative ${style.cardContainer}`}>
+    <div className="position-relative">
+      <div className={` ${style.cardContainer}`}>
         <div className={`text-white ${style.shareContainer}`}>
           <AiOutlineShareAlt
             onClick={() => setShowShareModel(true)}
@@ -79,7 +79,7 @@ const CardDetails = ({ data }) => {
         showShareModal={showShareModal}
         setShowShareModel={setShowShareModel}
       />
-    </>
+    </div>
   );
 };
 

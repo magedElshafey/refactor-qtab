@@ -6,7 +6,7 @@ const CardTabs = ({ products, leads, charts }) => {
   const [showProducts, setShowProducts] = useState(true);
   const [showLeads, setShowLeads] = useState(false);
   const [showCharts, setShowCharts] = useState(false);
-  console.log("this is leads", leads);
+
   return (
     <div className="container py-5">
       <div className="pb-2 d-flex justify-content-center gap-4">
